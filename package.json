@@ -1,0 +1,23 @@
+{
+  "name": "nodejs_course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shehab-Mahmoud/NodeJS_course.git"
+  },
+  "author": "shehab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shehab-Mahmoud/NodeJS_course/issues"
+  },
+  "homepage": "https://github.com/Shehab-Mahmoud/NodeJS_course#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
