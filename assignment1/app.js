@@ -1,7 +1,10 @@
 const http = require('http')
+const express =require('express')
 
 // server configs
 const port = 3001
+const app = express();
+app.use(express.urlencoded({ extended: false }));
 
 // assignment variables 
 const html = `
@@ -29,7 +32,28 @@ const html = `
 const users = ['user1','user2','user3','user4']
 
 
-// Create server
+app.post('/create-user',(req,res,next)=>{
+    console.log("at create user")
+    console.log('Submitted username:', req.body.username);
+    if(req.body.username){
+        users.push(req.body.username)
+    }
+    res.redirect('/')
+})
+
+app.use('/',(req,res,next)=>{
+    console.log('at home')
+    const usersHtml = `${users.map(user => `<li>${user}</li>`).join(' ')}` 
+    const updatedHtml = html.replace('{{USER_LIST}}',usersHtml)
+
+    res.send(updatedHtml)
+    next();
+
+})
+
+
+
+//Create server
 const server = http.createServer((req,res)=>{
     const url = req.url
     const method = req.method
@@ -58,5 +82,5 @@ const server = http.createServer((req,res)=>{
     }
 
 })
-console.log("ff")
-server.listen(port)
+
+app.listen(3001)
